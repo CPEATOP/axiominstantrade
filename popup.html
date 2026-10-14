@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Фон Instant Trade</title>
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <div class="title">
+      <img src="icons/icon32.png" alt="">
+      <span>Фон Instant Trade</span>
+    </div>
+    <label class="switch" title="Включить / выключить">
+      <input type="checkbox" id="enabled"><span></span>
+    </label>
+  </header>
+
+  <div id="status" class="status">Проверяю вкладку…</div>
+
+  <section>
+    <div class="tabs" id="mode">
+      <button data-mode="color">Цвет</button>
+      <button data-mode="gradient">Градиент</button>
+      <button data-mode="image">Картинка</button>
+    </div>
+
+    <div class="pane" data-pane="color">
+      <div class="row"><label>Цвет</label><input type="color" id="color"></div>
+    </div>
+
+    <div class="pane" data-pane="gradient">
+      <div class="row"><label>Цвет 1</label><input type="color" id="grad1"></div>
+      <div class="row"><label>Цвет 2</label><input type="color" id="grad2"></div>
+      <div class="row"><label>Угол <b id="gradAngleV"></b></label><input type="range" id="gradAngle" min="0" max="360"></div>
+      <div class="presets" id="presets"></div>
+    </div>
+
+    <div class="pane" data-pane="image">
+      <div class="row col">
+        <label>Файл с компьютера (PNG, JPG, GIF, WebP)</label>
+        <div class="filebox">
+          <input type="file" id="file" accept="image/*">
+          <button id="clearImage" class="ghost">Убрать</button>
+        </div>
+        <img id="thumb" alt="">
+      </div>
+      <div class="row col">
+        <label>…или ссылка на картинку</label>
+        <input type="url" id="imageUrl" placeholder="https://…/bg.gif">
+      </div>
+      <div class="row"><label>Вписать</label>
+        <select id="imageFit">
+          <option value="cover">Заполнить</option>
+          <option value="contain">Целиком</option>
+          <option value="tile">Плиткой</option>
+        </select>
+      </div>
+      <div class="row"><label>Позиция</label>
+        <select id="imagePos">
+          <option value="center">По центру</option>
+          <option value="top">Сверху</option>
+          <option value="bottom">Снизу</option>
+          <option value="left">Слева</option>
+          <option value="right">Справа</option>
+        </select>
+      </div>
+      <p class="note" id="fileNote">Если окно закрывается при выборе файла — <a href="#" id="openTab">открой настройки во вкладке</a>.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="row"><label>Непрозрачность <b id="opacityV"></b></label><input type="range" id="opacity" min="0" max="100"></div>
+    <div class="row"><label>Размытие <b id="blurV"></b></label><input type="range" id="blur" min="0" max="30"></div>
+    <div class="row"><label>Затемнение <b id="dimV"></b></label><input type="range" id="dim" min="0" max="90"></div>
+    <div class="row"><label>Прозрачные внутренние блоки</label>
+      <label class="switch small"><input type="checkbox" id="clearInner"><span></span></label>
+    </div>
+  </section>
+
+  <section>
+    <div class="row col">
+      <label>Панель на странице</label>
+      <div class="btns">
+        <button id="pick">Указать вручную</button>
+        <button id="autoFind" class="ghost">Искать автоматически</button>
+      </div>
+      <code id="selectorView"></code>
+    </div>
+  </section>
+
+  <footer><button id="reset" class="ghost">Сбросить всё</button></footer>
+
+  <script src="defaults.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

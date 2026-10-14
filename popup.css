@@ -1,0 +1,82 @@
+:root {
+  --bg: #000000;
+  --card: #000000;
+  --line: #2a2a2a;
+  --text: #ffffff;
+  --muted: #9a9a9a;
+  --accent: #ffffff;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  width: 340px;
+  background: var(--bg);
+  color: var(--text);
+  font: 13px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif;
+  padding: 12px;
+}
+html:has(body) { background: var(--bg); }
+@media (min-width: 500px) { body { margin: 24px auto; } }
+
+header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.title { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 14px; }
+.title img { width: 22px; height: 22px; }
+
+.status { font-size: 12px; color: var(--muted); padding: 6px 10px; border-radius: 8px; border: 1px solid var(--line); margin-bottom: 10px; }
+.status.ok { color: #7ee2a8; }
+.status.warn { color: #f5c26b; }
+
+section { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px; margin-bottom: 10px; }
+
+.tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin-bottom: 10px; }
+.tabs button { background: #000; border: 1px solid var(--line); color: var(--muted); padding: 6px 0; border-radius: 6px; cursor: pointer; font: inherit; }
+.tabs button:hover { color: var(--text); }
+.tabs button.active { border-color: #fff; color: #fff; }
+
+.pane { display: none; }
+.pane.active { display: block; }
+
+.row { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 8px 0; }
+.row.col { flex-direction: column; align-items: stretch; }
+.row label { color: var(--muted); }
+.row label b { color: var(--text); font-weight: 500; margin-left: 4px; }
+input[type="range"] { width: 150px; accent-color: #ffffff; }
+input[type="color"] { width: 44px; height: 26px; border: 1px solid #fff; border-radius: 6px; background: none; padding: 0; cursor: pointer; }
+input[type="url"], select {
+  background: #000; color: var(--text); border: 1px solid #fff; border-radius: 6px; padding: 6px 8px; font: inherit;
+}
+input[type="url"] { width: 100%; }
+.filebox { display: flex; gap: 6px; align-items: center; }
+.filebox input { flex: 1; min-width: 0; color: var(--muted); font-size: 12px; }
+.filebox input::file-selector-button {
+  background: #000; color: #fff; border: 1px solid #fff; border-radius: 6px; padding: 5px 10px; margin-right: 8px; cursor: pointer; font: inherit;
+}
+#thumb { display: none; max-width: 100%; max-height: 90px; border-radius: 6px; object-fit: cover; margin-top: 4px; }
+#thumb.show { display: block; }
+
+.presets { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin-top: 6px; }
+.presets button { height: 24px; border-radius: 6px; border: 1px solid #fff; cursor: pointer; }
+
+.switch { position: relative; display: inline-block; width: 38px; height: 22px; flex: none; }
+.switch.small { width: 32px; height: 18px; }
+.switch input { display: none; }
+.switch span { position: absolute; inset: 0; background: #000; border: 1px solid #fff; border-radius: 99px; transition: .2s; cursor: pointer; }
+.switch span::after { content: ""; position: absolute; left: 2px; top: 2px; aspect-ratio: 1; background: #fff; border-radius: 50%; transition: .2s; }
+.switch.small span::after { width: 12px; }
+.switch:not(.small) span::after { width: 16px; }
+.switch input:checked + span { background: #fff; }
+.switch input:checked + span::after { background: #000; transform: translateX(16px); }
+.switch.small input:checked + span::after { transform: translateX(14px); }
+
+.btns { display: flex; gap: 6px; }
+button { font: inherit; }
+.btns button, footer button, #clearImage {
+  flex: 1; padding: 7px 10px; border-radius: 7px; border: 1px solid #fff; background: #000; color: #fff; cursor: pointer; font-weight: 500;
+}
+.btns button:hover, footer button:hover, #clearImage:hover { background: #fff; color: #000; }
+#clearImage { flex: none; }
+code { display: block; font-size: 11px; color: var(--muted); word-break: break-all; margin-top: 4px; }
+code:empty { display: none; }
+.note { font-size: 11px; color: var(--muted); margin: 6px 0 0; }
+.note a { color: #fff; }
+footer { display: flex; }
